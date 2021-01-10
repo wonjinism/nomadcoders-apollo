@@ -4,11 +4,13 @@ import { useQuery } from "@apollo/react-hooks"
 import Movie from '../components/Movie'
 import styled from 'styled-components'
 
+
 const GET_MOVIES = gql`
 {
     movies {
       id
       medium_cover_image
+      isLiked @client
     }
   }
   
@@ -74,6 +76,7 @@ export default () => {
                     <Movie
                         key={m.id}
                         id={m.id}
+                        isLiked={m.isLiked}
                         bg={m.medium_cover_image}
                     />
                 ))}
